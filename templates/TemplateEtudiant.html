@@ -1,0 +1,41 @@
+{% extends "BaseHTML.html" %} <!-- Template comprenant header et footer -->
+
+{% block titre %}Liste des Etudiants de la classe{% endblock %}
+
+{% block corps %}
+    <div class='listing_add'>
+        <div class='container'> 
+            
+            <h5> Liste des étudiants enregistrés :</h5>
+
+            <!-- Affichage du nom des étudiants et création du lien du profil-->
+            <ul>
+                {% for row in name_etudiant_html %}
+                    <li>
+                        {% for key in row %}
+                            <a href="/etudiants/{{ key }}">{{ key }}</a>
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <!-- fin -->
+        </div>
+
+        <div class='formulaire'>
+
+            <h5> Pour ajouter un étudiant,</br> merci de remplir les champs ci-dessous :</h5>
+            
+            <!-- Formulaire d'envoi des données vers adresse du script "AJOUTER" -->
+            <ul>
+                <form action="{{ url_for('data_form')}}" method="post">
+                <li>Nom : <input type="text" name="name_etudiant" value="" /></li>
+                <li>Téléphone : <input type="text" name="tel_etudiant" value="" /></li>
+                <li>Code Postal : <input type="text" name="cp_etudiant" value="" /></li>
+                <li>Ville : <input type="text" name="ville_etudiant" value="" /></li>
+                <li>Lieu d'étude : <input type="text" name="universite_etudiant" value="" /></li>
+                <li><input type="submit" name="send" value="Soumettre">
+                </form>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

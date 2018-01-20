@@ -1,0 +1,24 @@
+{% extends "BaseHTML.html" %} <!-- Template comprenant header et footer -->
+
+{% block titre %}Site web de l'université{% endblock %}
+
+{% block corps %}
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        </ol>
+    
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <a href="/etudiants/" alt="Cliquez pour y accéder">
+                <div class="item active">
+                    <img src="{{ url_for('static', filename='universite.jpg') }}" alt="Université" width="2268" height="1080">
+                <div class="carousel-caption">
+              <h3>Liste des Etudiants</h3>
+              <p>Contactez vos camarades</p>
+            </div> 
+            </a>     
+          </div>
+        
+{% endblock %}

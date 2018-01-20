@@ -1,0 +1,57 @@
+{% extends "BaseHTML.html" %} <!-- Template comprenant header et footer -->
+
+{% block titre %}Etudiant de la classe{% endblock %}
+
+{% block corps %}
+<div class="profil">
+    <div class='header_profil'>
+        <h1>{{name_etudiant_html}}</h1>
+
+        <!-- Suppression du profil-->
+        <div class=container1>
+            <form action="/etudiants/{{ profil_etudiant_html[1] }}/delete_profil/" method="post">
+            <input type="hidden" name="data_name_etudiant" value="{{ profil_etudiant_html[1] }}"  />
+            <input type="submit" name="send" value="Supprimer">
+            </form>
+        </div>
+        <!-- fin suppression -->
+    </div>
+
+    <div class='info_contact'>
+
+    <!-- affichage des infos du profil-->
+        <div class=container2>
+            {% for k in profil_etudiant_html[2:] %} 
+                <p>{{ k }}</p>
+            {% endfor %}
+        </div>
+    <!-- fin affichage -->
+
+    <!-- Update du profil-->
+        <div class=container3>
+            {% for a in k[1:] %} 
+                <p>
+                    <form action="/etudiants/{{ profil_etudiant_html[1] }}/modify/{{ a }}/" method="post">
+                    <input class="" type="text" name="{{ a }}" value=""  />
+                    <input type="submit" name="send" value="Mettre à jour">
+                    </form>
+                </p>
+            {% endfor %}
+        </div>
+    <!-- fin update -->
+
+    <!-- delete des infos du profil-->
+        <div class=container3>
+            {% for a in k[1:] %} 
+                <p>
+                    <form action="/etudiants/{{ profil_etudiant_html[1] }}/modify/{{ a }}/" method="post">
+                    <input class="" type="hidden" name="{{ a }}" value=""  />
+                    <input type="submit" name="send" value="Supprimer">
+                    </form>
+                </p>
+            {% endfor %}
+        </div>
+    <!-- fin update -->
+    </div>
+</div>
+{% endblock %}
